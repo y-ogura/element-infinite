@@ -1,25 +1,30 @@
 <template>
   <section>
-    <div class="table-container">
     <el-button @click="resetInfinite">reset</el-button>
-    <el-table :data="list" style="with: 100%">
-      <el-table-column prop="id" label="id" />
-      <el-table-column prop="name" label="name" />
-      <el-table-column prop="email" label="email" width="180" />
-      <iniinfinite-loading
-        slot="append"
-        :identifier="infiniteId"
-        force-use-in-infinite-wrapper=".el-table__body-wrapper"
-        @infinite="infiniteHandler"
-      />
-    </el-table>
-  </div>
+    <div class="table-container">
+      <el-table :data="list" style="with: 100%">
+        <el-table-column prop="id" label="id" />
+        <el-table-column prop="name" label="name" />
+        <el-table-column prop="email" label="email" width="180" />
+        <InfiniteLoading
+          slot="append"
+          :identifier="infiniteId"
+          force-use-in-infinite-wrapper=".el-table__body-wrapper"
+          @infinite="infiniteHandler"
+        />
+      </el-table>
+    </div>
   </section>
 </template>
 
 <script>
+import InfiniteLoading from 'vue-infinite-loading'
+
 export default {
-data() {
+  components: {
+    InfiniteLoading
+  },
+  data() {
     return {
       accounts: [],
       list: [],
@@ -97,6 +102,6 @@ data() {
 <style>
 .table-container > .el-table > .el-table__body-wrapper {
   overflow: scroll;
-  max-height: calc(100vh - 100px);
+  max-height: 480px;
 }
 </style>

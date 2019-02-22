@@ -1,7 +1,7 @@
 import pkg from './package.json'
 
 export default {
-  mode: 'universal',
+  mode: 'ssr',
 
   /*
    ** Headers of the page
@@ -49,8 +49,7 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    { src: '~/plugins/element-ui', ssr: false },
-    { src: '~/plugins/infinite-loading', ssr: false }
+    { src: '~/plugins/element-ui' }
   ],
 
   /*
